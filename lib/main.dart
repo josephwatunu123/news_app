@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'homepage.dart'; // Import your HomePage file
 
 void main() => runApp(const MyApp());
 
@@ -10,29 +11,7 @@ class MyApp extends StatelessWidget {
     const String appTitle = 'Flutter news App';
     return MaterialApp(
       title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const SingleChildScrollView(
-          child: Column(
-            children: [
-              ImageSection(image: 'images/plane.jpg',),
-              TitleSection(name: 'Contact Lost With KQ Boeing 737-500 After Take Off'),
-              AuthorSection(),
-              TextSection(description: 'The aviation world faced a harrowing moment when contact was lost with a Kenya Airways Boeing 737-500 shortly after takeoff. '
-                  'This incident has sparked widespread concern and speculation as search and rescue operations are vigorously underway. The Boeing 737-500, known for its reliability and extensive use in commercial aviation, was on a routine flight when it seemingly vanished from radar, '
-                  'leaving aviation authorities and families of the passengers in a state of anxious uncertainty. The flight, which departed from Jomo Kenyatta International Airport in Nairobi, was bound for its destination with no initial signs of trouble. However,'
-                  ' just minutes after takeoff, air traffic controllers reported losing communication with the aircraft. The sudden loss of contact has raised numerous questions regarding the possible causes, ranging from technical malfunctions to adverse weather '
-                  'conditions or even more severe scenarios such as mechanical failure or pilot error. As soon as the distress signal was recognized, Kenya Airways activated its emergency response plan. Search and rescue teams, comprising both air and ground units, were dispatched to the last known location of the aircraft. The area is being combed meticulously, with efforts hampered by challenging terrain and weather conditions. Authorities have also reached out'
-                  ' to neighboring countries for assistance, widening the search radius in hopes of finding any trace of the missing aircraft.'
-              ),
-
-
-            ],
-          ),
-        ),
-      ),
+      home: HomePage(), // Set HomePage as the home widget
     );
   }
 }

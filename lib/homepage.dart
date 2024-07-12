@@ -1,24 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: ListView(
-          padding: const EdgeInsets.all(15.0),
-          children: [
-            TopStory(image: 'images/plane.jpg'),
-            Topics(
-              topic1: 'topic1',
-              topic2: 'topic2',
-              topic3: 'topic3',
-              topic4: 'topic4',
-              topic5: 'topic5',
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top:50.0),
+                  child: TopStory(image: 'images/plane.jpg',),
+                )
+
+
+              ],
             ),
-          ],
-        ),
+          )
+
+        )
       ),
     );
   }
@@ -31,12 +35,28 @@ class TopStory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Image.asset(image, width: 600, height: 240, fit: BoxFit.cover),
-          Text('Contact Lost With KQ Boeing 737-500 After Take Off'),
-        ],
+      height: 350,
+      width: 370,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.white38),
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [BoxShadow(color: Colors.white, blurRadius: 2.0, offset: Offset(2.0,2.0)),]
       ),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+              child: Image.asset(image,width: 600, height: 240, fit: BoxFit.cover,)
+          ),
+          SizedBox(height: 6.0),
+          Expanded(child:
+          Text("This is the top Story",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          ))
+        ],
+
+      )
     );
   }
 }
