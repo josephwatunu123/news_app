@@ -14,11 +14,15 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                WelcomeGreetings(greetings:'Good Morning'),
                 TopStory(image: 'images/plane.jpg'),
-                SizedBox(height: 20,),
+                SizedBox(height: 25,),
                 Topics(),
+                SizedBox(height: 25,),
+                FeaturedStory(title: 'An Illinois town fights to save its power plant'),
                 SizedBox(height: 20,),
                 FeaturedStory(title: 'An Illinois town fights to save its power plant'),
+
 
               ],
             )
@@ -41,23 +45,32 @@ class TopStory extends StatelessWidget {
     return Container(
       height: 350,
       width: 370,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white38),
-        borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [BoxShadow(color: Colors.white, blurRadius: 2.0, offset: Offset(2.0,2.0)),]
+      decoration:
+      BoxDecoration( border: Border.all(color: Colors.white38), borderRadius: BorderRadius.circular(15.0),
+        boxShadow: [BoxShadow(color: Colors.white70, blurRadius: 2.0, offset: Offset(2.0,2.0)),]
       ),
 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-              child: Image.asset(image,width: 600, height: 240, fit: BoxFit.cover,)
-          ),
+          Expanded(child: Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(25),
+            ),
+          )),
+
           SizedBox(height: 6.0),
-          Expanded(child:
-          Text("This is the top Story",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          ))
+          Padding(padding: EdgeInsets.all(10),
+          child: Text('Contact Lost with KenyanAir Boeing 737-500 Moments After Take Off', style: mainTitleStyle),),
+          Container(
+            padding: EdgeInsets.all(10),
+            child:Align(
+              alignment: Alignment.bottomRight,
+              child: Text("Date"),
+            ),
+          )
         ],
 
       )
@@ -81,18 +94,18 @@ class Topics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
+      padding: EdgeInsets.only(left: 20),
       height: 25,
-        color: Colors.blue,
         child: Align(
           alignment: Alignment.center,
           child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(growableTopics[0],),SizedBox(width: 10,),Text(growableTopics[1]),SizedBox(width: 10,),Text(growableTopics[2]),SizedBox(width: 10,),Text(growableTopics[3]),SizedBox(width: 10,),
-                Text(growableTopics[1]),SizedBox(width: 10,),Text(growableTopics[1]),SizedBox(width: 10,),Text(growableTopics[3]),
+                Text(growableTopics[0],style: bodytextStyle,),SizedBox(width: 10,),Text(growableTopics[1],style: bodytextStyle,),SizedBox(width: 10,),Text(growableTopics[2],style: bodytextStyle,),SizedBox(width: 10,),Text(growableTopics[3],style: bodytextStyle,),SizedBox(width: 10,),
+                Text(growableTopics[1],style: bodytextStyle,),SizedBox(width: 10,),
               ],
             )
           ],
@@ -112,7 +125,8 @@ class FeaturedStory extends StatelessWidget {
     return Container(
       height: 120,
       width: 400,
-      color: Colors.blueAccent,
+      padding: EdgeInsets.all(10),
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -127,22 +141,22 @@ class FeaturedStory extends StatelessWidget {
           SizedBox(width: 10,),
 
           Expanded (child: Container(
-            color: Colors.teal[200],
+
             child: Column(
               children: [
-                Expanded(child: Text(title)),
+                Expanded(child: Text(title,style: secondaryTitleStyle,)),
                 SizedBox(height:4,),
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(CupertinoIcons.calendar),
-                      SizedBox(width: 2,),
-                      Text('Date Text'),
+
+                      Text('Date Text', style: minorDetailsStyle,),
                       SizedBox(width: 2,),
                       Icon(CupertinoIcons.time),
-                      SizedBox(width: 2,),
-                      Text('Read Time')
+
+                      Text('Read Time',style: minorDetailsStyle,)
                     ],
                   ),
                 )
@@ -151,6 +165,23 @@ class FeaturedStory extends StatelessWidget {
           )
           )
         ],
+      ),
+    );
+  }
+}
+
+class WelcomeGreetings extends StatelessWidget{
+  const WelcomeGreetings({super.key, required this.greetings});
+  final String greetings;
+
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      padding: EdgeInsets.only(left: 25,top: 20),
+      height: 100,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(greetings, style: greetingsStyle,),
       ),
     );
   }

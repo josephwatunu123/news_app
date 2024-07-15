@@ -56,6 +56,17 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  fonts:
+  - family: Poppins
+    fonts:
+      - asset: Assets/fonts/poppins/Poppins-SemiBold.ttf
+      - asset: Assets/fonts/poppins/Poppins-Regular.ttf
+  - family: Lato
+    fonts:
+      - asset: Assets/fonts/lato/Lato-Regular.ttf
+        weight: 400
+
+
   uses-material-design: true
   assets:
     - images/
