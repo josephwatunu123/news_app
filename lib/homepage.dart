@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:news_app/Article.dart';
 import 'package:news_app/Constants/decorations.dart';
 
 class HomePage extends StatelessWidget {
@@ -42,38 +43,43 @@ class TopStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 350,
-      width: 370,
-      decoration:
-      BoxDecoration( border: Border.all(color: Colors.white38), borderRadius: BorderRadius.circular(15.0),
-        boxShadow: [BoxShadow(color: Colors.white70, blurRadius: 2.0, offset: Offset(2.0,2.0)),]
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Article()));
+      },
+      child: Container(
+        height: 350,
+        width: 370,
+        decoration:
+        BoxDecoration( border: Border.all(color: Colors.white38), borderRadius: BorderRadius.circular(15.0),
+          boxShadow: [BoxShadow(color: Colors.white70, blurRadius: 2.0, offset: Offset(2.0,2.0)),]
+        ),
+
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(25),
+              ),
+            )),
+
+            SizedBox(height: 6.0),
+            Padding(padding: EdgeInsets.all(10),
+            child: Text('Contact Lost with KenyanAir Boeing 737-500 Moments After Take Off', style: mainTitleStyle),),
+            Container(
+              padding: EdgeInsets.all(10),
+              child:Align(
+                alignment: Alignment.bottomRight,
+                child: Text("Date"),
+              ),
+            )
+          ],
+
+        )
       ),
-
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(child: Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(25),
-            ),
-          )),
-
-          SizedBox(height: 6.0),
-          Padding(padding: EdgeInsets.all(10),
-          child: Text('Contact Lost with KenyanAir Boeing 737-500 Moments After Take Off', style: mainTitleStyle),),
-          Container(
-            padding: EdgeInsets.all(10),
-            child:Align(
-              alignment: Alignment.bottomRight,
-              child: Text("Date"),
-            ),
-          )
-        ],
-
-      )
     );
   }
 }
