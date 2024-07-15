@@ -1,30 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:news_app/Constants/decorations.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.grey[300],
         body: Center(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top:50.0),
-                  child: TopStory(image: 'images/plane.jpg',),
-                )
-
+                TopStory(image: 'images/plane.jpg'),
+                SizedBox(height: 20,),
+                Topics(),
+                SizedBox(height: 20,),
+                FeaturedStory(title: 'An Illinois town fights to save its power plant'),
 
               ],
+            )
+
             ),
           )
 
         )
-      ),
-    );
+      );
+
   }
 }
 
@@ -64,29 +68,38 @@ class TopStory extends StatelessWidget {
 class Topics extends StatelessWidget {
   const Topics({
     super.key,
-    required this.topic1,
-    required this.topic2,
-    required this.topic3,
-    required this.topic4,
-    required this.topic5,
   });
 
-  final String topic1, topic2, topic3, topic4, topic5;
+  final List<String> growableTopics = const [
+    'Topic 1',
+    'Topic 2',
+    'Topic 3',
+    'Topic 4',
+    'Topic 5',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          Text(topic1),
-          Text(topic2),
-          Text(topic3),
-          Text(topic4),
-          Text(topic5),
-        ],
-      ),
-    );
+    return  Container(
+      height: 25,
+        color: Colors.blue,
+        child: Align(
+          alignment: Alignment.center,
+          child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(growableTopics[0],),SizedBox(width: 10,),Text(growableTopics[1]),SizedBox(width: 10,),Text(growableTopics[2]),SizedBox(width: 10,),Text(growableTopics[3]),SizedBox(width: 10,),
+                Text(growableTopics[1]),SizedBox(width: 10,),Text(growableTopics[1]),SizedBox(width: 10,),Text(growableTopics[3]),
+              ],
+            )
+          ],
+        ),
+        )
+      );
+
   }
 }
 
@@ -96,15 +109,48 @@ class FeaturedStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: SizedBox(
-        height: 100,
-        child: Container(
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(title),
+    return Container(
+      height: 120,
+      width: 400,
+      color: Colors.blueAccent,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: 150,
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
-        ),
+
+          SizedBox(width: 10,),
+
+          Expanded (child: Container(
+            color: Colors.teal[200],
+            child: Column(
+              children: [
+                Expanded(child: Text(title)),
+                SizedBox(height:4,),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(CupertinoIcons.calendar),
+                      SizedBox(width: 2,),
+                      Text('Date Text'),
+                      SizedBox(width: 2,),
+                      Icon(CupertinoIcons.time),
+                      SizedBox(width: 2,),
+                      Text('Read Time')
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
+          )
+        ],
       ),
     );
   }
