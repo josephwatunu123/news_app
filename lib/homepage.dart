@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey[300],
         body: Center(
@@ -61,7 +62,7 @@ class TopStory extends StatelessWidget {
             Expanded(child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage(image) ,fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(25),
               ),
             )),
@@ -139,7 +140,7 @@ class FeaturedStory extends StatelessWidget {
           Container(
             width: 150,
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
+              image: DecorationImage(image: AssetImage('images/powerplant.jpg') ,fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(12),
             ),
           ),

@@ -6,6 +6,7 @@ class Article extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey[300],
         body: Center(
@@ -17,7 +18,7 @@ class Article extends StatelessWidget{
                 ImageSection(image: 'images/plane.jpg'),
                 SizedBox(height: 10,),
                 ArticleTitle(title: 'Contact Lost with KenyanAir Boeing 737-500 Moments After Take Off'),
-                AuthorSectionContext(name: 'name', date: 'date'),
+                AuthorSectionContext(name: 'Jane Doe', date: '12th July 2024'),
                 SizedBox(height: 5,),
                 TextSection(description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum,'
                     ' you need to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.')
@@ -66,8 +67,8 @@ class AuthorSectionContext extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         CircleAvatar(
-          radius: 20,
-          backgroundColor: Colors.grey,
+          radius: 25,
+          backgroundImage: AssetImage('images/persona.jpg'),
         ),
         const SizedBox(width: 8),
         Column(
