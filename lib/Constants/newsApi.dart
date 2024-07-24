@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class Newsapi{
    static const baseurl = "https://newsapi.org/v2/top-headlines?";
-   static const apikey= "4e3c52af12a94c598b6046e3e71d73e6";
+   static const apikey= "";
 
    Future<news> getNews() async{
      final response= await http .get(Uri.parse(baseurl));
@@ -34,6 +34,7 @@ class news{
     required this.content,
     required this.date,
   });
+
 
   factory news.fromJson(Map<String, dynamic> json) {
     return switch (json){
