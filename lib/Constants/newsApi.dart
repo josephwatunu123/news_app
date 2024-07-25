@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 
 class Newsapi{
    static const baseurl = "https://newsapi.org/v2/top-headlines?";
-   static const apikey= "";
+   static const apikey= "4e3c52af12a94c598b6046e3e71d73e6";
 
-   Future<List<news>> getNews() async{
+   Future<List<news>> GetNews() async{
      final response= await http .get(Uri.parse('${baseurl}apikey=$apikey&country=us'));
 
      if(response.statusCode == 200){
