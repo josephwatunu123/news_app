@@ -3,37 +3,77 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:news_app/Article.dart';
 import 'package:news_app/Constants/decorations.dart';
+import 'package:news_app/Constants/newsApi.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>{
+  late Future<List<News>> newsFuture;
+  
+  @override
+  void initState(){
+    super.initState();
+    newsFuture = Newsapi().GetNews();
+  }
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey[300],
         body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                WelcomeGreetings(greetings:'Good Morning'),
-                TopStory(image: 'images/plane.jpg'),
-                SizedBox(height: 25,),
-                Topics(),
-                SizedBox(height: 25,),
-                FeaturedStory(title: 'An Illinois town fights to save its power plant'),
-                SizedBox(height: 20,),
-                FeaturedStory(title: 'An Illinois town fights to save its power plant'),
+              child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      WelcomeGreetings(greetings:'Good Morning'),
+                      TopStory(image: 'images/plane.jpg'),
+                      SizedBox(height: 25,),
+                      Topics(),
+                      SizedBox(height: 25,),
+                      FutureBuilder<List<News>>(
+                          future: newsFuture,
+                          builder: (context, snapshot){
+                            if(snapshot.connectionState== ConnectionState.waiting){
+                              return Center(child: CircularProgressIndicator(),);
+                            }else if(snapshot.hasError){
+                              return Center(child: Text('Error: ${snapshot.error}'),);
+                            }else if(!snapshot.hasData || snapshot.data!.isEmpty){
+                              return Center(child: Text('No articles available'),);
+                            }
+                            final News = snapshot.data!;
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 25,),
+                                  ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: News.length,
+                                      itemBuilder: (context, index){
+                                        final article= News[index];
+                                        return Column(
+                                          children: [
+                                            FeaturedStory(title:article.title),
+                                            SizedBox(height: 20,)
+                                          ],
+                                        );
+                                      }
+
+                                  )
+                                ],
+                              ),
+                            );}
+                      )
 
 
-              ],
+                    ],
+                  )
+
+              ),
             )
-
-            ),
-          )
-
-        )
-      );
+        ));
 
   }
 }
@@ -125,7 +165,7 @@ class Topics extends StatelessWidget {
 
 class FeaturedStory extends StatelessWidget {
   const FeaturedStory({super.key, required this.title});
-  final String title;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +191,7 @@ class FeaturedStory extends StatelessWidget {
 
             child: Column(
               children: [
-                Expanded(child: Text(title,style: secondaryTitleStyle,)),
+                Expanded(child: Text(title!,style: secondaryTitleStyle,)),
                 SizedBox(height:4,),
                 Container(
                   child: Row(
