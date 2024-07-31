@@ -40,3 +40,11 @@ var greetingsStyle = TextStyle(
  fontSize: 26,
  color: Colors.purple[900],
 );
+
+var onboardingScreenMinorText = TextStyle(
+ fontFamily: defaultFontnameTitles,
+ fontWeight: FontWeight.w500,
+ fontSize: 12,
+ color: Colors.grey[800],
+
+);
