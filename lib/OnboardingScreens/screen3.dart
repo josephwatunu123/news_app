@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:news_app/Constants/decorations.dart';
+import 'package:news_app/homepage.dart';
 
 class Screen3 extends StatefulWidget{
   @override
@@ -28,9 +29,9 @@ class _Screen3State extends State<Screen3>{
           body: Center(
             child: Column(
               children: [
-                SizedBox(height: 30,),
+                SizedBox(height: 45,),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(15),
                   child: Text('Get News from all over the City', style: greetingsStyle, textAlign: TextAlign.center,),
                 ),
                 Container(
@@ -41,7 +42,7 @@ class _Screen3State extends State<Screen3>{
                 ),
                 SizedBox(height: 30,),
                 Container(
-                  height: 500,
+                  height: 450,
                   decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/around_world.png'))),
                 ),
                 Container(
@@ -49,8 +50,10 @@ class _Screen3State extends State<Screen3>{
                       width: 160,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: (){},
-                        child: Text("Next"),
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                        },
+                        child: Text("Dive in!"),
                       ),
                     )
                 ),

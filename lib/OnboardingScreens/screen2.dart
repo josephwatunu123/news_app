@@ -26,10 +26,11 @@ class _Screen2State extends State<Screen2>{
           body: Center(
             child: Column(
               children: [
-                SizedBox(height: 30,),
+                SizedBox(height: 60,),
                 Container(
                   child: Text('Read at your Comfort', style: greetingsStyle,),
                 ),
+                // SizedBox(height: 10,),
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
@@ -38,7 +39,7 @@ class _Screen2State extends State<Screen2>{
                 ),
                 SizedBox(height: 30,),
                 Container(
-                  height: 500,
+                  height: 480,
                   decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/relaxing.png'))),
                 ),
                 Container(

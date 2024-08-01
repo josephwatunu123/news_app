@@ -28,11 +28,11 @@ class _Screen1State extends State<Screen1>{
           body: Center(
             child: Column(
               children: [
-                SizedBox(height: 30,),
+                SizedBox(height: 60,),
                 Container(
                   child: Text('All the news', style: greetingsStyle,),
                 ),
-                SizedBox(height: 30,),
+                SizedBox(height: 20,),
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
