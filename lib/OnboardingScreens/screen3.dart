@@ -1,5 +1,6 @@
 
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,7 +33,26 @@ class _Screen3State extends State<Screen3>{
                 SizedBox(height: 45,),
                 Container(
                   padding: EdgeInsets.all(15),
-                  child: Text('Get News from all over the City', style: greetingsStyle, textAlign: TextAlign.center,),
+                  child: Column(
+                    children: [
+                      Text('Get News from all over', style: greetingsStyle, textAlign: TextAlign.center,),
+                      DefaultTextStyle(
+                          style: greetingsStyle,
+                          child: Container(
+                            height: 50,
+                            child: AnimatedTextKit(
+                              animatedTexts: [
+
+                                TyperAnimatedText('The City', speed: Duration(milliseconds: 100)),
+                                TyperAnimatedText('The Country',speed: Duration(milliseconds: 100)),
+                                TyperAnimatedText('The World',speed: Duration(milliseconds: 100)),
+                              ],
+                            ),
+                          )
+                      ),
+                      // Text('The City', style: greetingsStyle, textAlign: TextAlign.center,),
+                    ],
+                  ),
                 ),
                 Container(
                   child: Padding(
