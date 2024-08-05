@@ -1,9 +1,11 @@
 
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:news_app/Constants/decorations.dart';
+import 'package:news_app/homepage.dart';
 
 class Screen3 extends StatefulWidget{
   @override
@@ -28,29 +30,50 @@ class _Screen3State extends State<Screen3>{
           body: Center(
             child: Column(
               children: [
-                SizedBox(height: 30,),
+                SizedBox(height: 45,),
                 Container(
-                  child: Text('All the news', style: greetingsStyle,),
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      Text('Get News from all over', style: greetingsStyle, textAlign: TextAlign.center,),
+                      DefaultTextStyle(
+                          style: greetingsStyle,
+                          child: Container(
+                            height: 50,
+                            child: AnimatedTextKit(
+                              animatedTexts: [
+
+                                TyperAnimatedText('The City', speed: Duration(milliseconds: 100)),
+                                TyperAnimatedText('The Country',speed: Duration(milliseconds: 100)),
+                                TyperAnimatedText('The World',speed: Duration(milliseconds: 100)),
+                              ],
+                            ),
+                          )
+                      ),
+                      // Text('The City', style: greetingsStyle, textAlign: TextAlign.center,),
+                    ],
+                  ),
                 ),
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Expanded
-                      (child: Text('We provide large number of articles for you to keep you informed', style: onboardingScreenMinorText,)),
+                    child: Text('We provide large number of articles for you to keep you informed', style: onboardingScreenMinorText, textAlign: TextAlign.center,),
                   ),
                 ),
                 SizedBox(height: 30,),
                 Container(
-                  height: 500,
-                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/news_anywhere.png'))),
+                  height: 450,
+                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/around_world.png'))),
                 ),
                 Container(
                     child: SizedBox(
                       width: 160,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: (){},
-                        child: Text("Next"),
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                        },
+                        child: Text("Dive in!"),
                       ),
                     )
                 ),

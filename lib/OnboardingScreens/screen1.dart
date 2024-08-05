@@ -1,5 +1,4 @@
-
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,15 +27,30 @@ class _Screen1State extends State<Screen1>{
           body: Center(
             child: Column(
               children: [
-                SizedBox(height: 30,),
+                SizedBox(height: 60,),
                 Container(
-                  child: Text('All the news', style: greetingsStyle,),
+                  height: 50,
+                  child: DefaultTextStyle(
+                    style: greetingsStyle,
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      animatedTexts: [
+                        RotateAnimatedText("All the News",
+                        ),
+
+                      ],
+                    )
+                  ),
                 ),
+                SizedBox(height: 20,),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Expanded
-                      (child: Text('We provide large number of articles for you to keep you informed', style: onboardingScreenMinorText,)),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child:  Text('We provide large number of articles for you to keep you informed',
+                      style: onboardingScreenMinorText,
+                      textAlign: TextAlign.center,
+                    ),
+
                   ),
                 ),
                 SizedBox(height: 30,),

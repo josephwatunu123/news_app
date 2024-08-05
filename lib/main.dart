@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Article.dart';
+import 'package:news_app/OnboardingScreens/onboardingScreen.dart';
 import 'package:news_app/OnboardingScreens/screen1.dart';
 import 'homepage.dart'; // Import your HomePage file
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     const String appTitle = 'Flutter news App';
     return MaterialApp(
       title: appTitle,
-      home: Screen1(), // Set HomePage as the home widget
+      home: OnboardingScreen(), // Set HomePage as the home widget
     );
   }
 }

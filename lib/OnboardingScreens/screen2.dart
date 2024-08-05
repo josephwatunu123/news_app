@@ -26,21 +26,21 @@ class _Screen2State extends State<Screen2>{
           body: Center(
             child: Column(
               children: [
-                SizedBox(height: 30,),
+                SizedBox(height: 60,),
                 Container(
-                  child: Text('All the news', style: greetingsStyle,),
+                  child: Text('Read at your Comfort', style: greetingsStyle,),
                 ),
+                // SizedBox(height: 10,),
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Expanded
-                      (child: Text('We provide large number of articles for you to keep you informed', style: onboardingScreenMinorText,)),
+                    child:  Text('We provide large number of articles for you to keep you informed', style: onboardingScreenMinorText,textAlign: TextAlign.center,),
                   ),
                 ),
                 SizedBox(height: 30,),
                 Container(
-                  height: 500,
-                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/news_anywhere.png'))),
+                  height: 480,
+                  decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/relaxing.png'))),
                 ),
                 Container(
                     child: SizedBox(
