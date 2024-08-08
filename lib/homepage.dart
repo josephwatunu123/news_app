@@ -99,11 +99,14 @@ class TopStory extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(image) ,fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(25),
+            Expanded(child: Hero(
+              tag: 'photo',
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(image) ,fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(25),
+                ),
               ),
             )),
 

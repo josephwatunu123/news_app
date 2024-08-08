@@ -40,11 +40,14 @@ class ImageSection extends StatelessWidget{
 
   @override
   Widget build (BuildContext context){
-    return Container(
-      height: 250,
-      width: 380,
-      decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
-        borderRadius: BorderRadius.circular(25),),
+    return Hero(
+      tag: 'photo',
+      child: Container(
+        height: 250,
+        width: 380,
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('images/plane.jpg') ,fit: BoxFit.cover),
+          borderRadius: BorderRadius.circular(25),),
+      ),
     );
   }
 }
