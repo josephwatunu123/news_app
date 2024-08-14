@@ -8,7 +8,7 @@ class Newsapi{
    static const apikey= "4e3c52af12a94c598b6046e3e71d73e6";
 
    Future<List<News>> GetNews() async{
-     final response= await http .get(Uri.parse('${baseurl}apikey=$apikey&country=us'));
+     final response= await http .get(Uri.parse('${baseurl}apikey=$apikey&sources=bbc-news'));
 
      if(response.statusCode == 200){
        List<dynamic> data = jsonDecode(response.body)['articles'];
@@ -41,7 +41,7 @@ class News{
     return News(
       author: json['author'],
       title: json['title'] ?? 'No title',
-      imageUrl: json['urlToImage'],
+      imageUrl: json['urlToImage'] ,
       content: json['content']?? 'Content was null',
       date: json['publishedAt'] ?? '',
     );

@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage>{
                                         final article= News[index];
                                         return Column(
                                           children: [
-                                            FeaturedStory(title:article.title),
+                                            FeaturedStory(title:article.title, imageUrl: article.imageUrl,),
                                             SizedBox(height: 20,)
                                           ],
                                         );
@@ -134,11 +134,11 @@ class Topics extends StatelessWidget {
   });
 
   final List<String> growableTopics = const [
-    'Topic 1',
-    'Topic 2',
-    'Topic 3',
-    'Topic 4',
-    'Topic 5',
+    'Business',
+    'Entertainment',
+    'General',
+    'health',
+    'Technology',
   ];
 
   @override
@@ -152,7 +152,7 @@ class Topics extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(growableTopics[0],style: bodytextStyle,),SizedBox(width: 10,),Text(growableTopics[1],style: bodytextStyle,),SizedBox(width: 10,),Text(growableTopics[2],style: bodytextStyle,),SizedBox(width: 10,),Text(growableTopics[3],style: bodytextStyle,),SizedBox(width: 10,),
                 Text(growableTopics[1],style: bodytextStyle,),SizedBox(width: 10,),
@@ -167,8 +167,9 @@ class Topics extends StatelessWidget {
 }
 
 class FeaturedStory extends StatelessWidget {
-  const FeaturedStory({super.key, required this.title});
+  const FeaturedStory({super.key, required this.title, required this.imageUrl});
   final String? title;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -183,7 +184,8 @@ class FeaturedStory extends StatelessWidget {
           Container(
             width: 150,
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('images/powerplant.jpg') ,fit: BoxFit.cover),
+              image: DecorationImage(image: imageUrl != null? NetworkImage(imageUrl!): AssetImage('images/powerplant.jpg'),
+                  fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(12),
             ),
           ),
